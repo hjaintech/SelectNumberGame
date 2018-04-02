@@ -1,0 +1,48 @@
+.gameDiv {
+    border: 2px solid grey;
+    box-shadow: 10px 10px grey;
+    width : 700px;
+    height: 700px;
+    margin : 0 auto;
+    columns: 3;  
+}
+
+.scoreDiv {
+   font-size: 100px;
+    color:red;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+.cell {
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    display: block;
+    background-color: darkgrey;
+}
+
+.cell:hover{
+    background-color: rgb(90, 85, 85);
+}
+
+.number {
+    font-size: 200px;
+    font-weight: bold;
+    color: green;
+}
+
+.highlightedTile {
+    background-color: #e2cfcf;
+}
+
+.highlightedTile:hover{
+    background-color: rgb(90, 85, 85);
+}
