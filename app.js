@@ -1,4 +1,6 @@
 function Game(numberOfTiles) {
+    this.oScoreDom = document.getElementById('scoreDiv');
+    
     this.score = 0;
     this.numberOfTiles = numberOfTiles;
     this.tileData = [];
@@ -18,8 +20,7 @@ Game.prototype.updateScore = function (val) {
         this.score --;
     }
 
-    var scoreDiv = document.getElementById('scoreDiv');
-    scoreDiv.innerHTML = 'Score: ' + this.score;
+    this.oScoreDom.innerHTML = 'Score: ' + this.score;
 }
 
 
@@ -58,7 +59,13 @@ Game.prototype.highlightNewTile = function () {
 
 function window_onLoad() {
     var mainDiv = document.getElementById('gameDiv');
+    
+    // Attach the click event listener
+    mainDiv.addEventListener('click', cellClicked);
+    
     game = new Game(9);
+
+    var dummyDiv = document.createElement('div');
 
     for (var i = 0; i < game.tileData.length; i++) {
 
@@ -70,18 +77,22 @@ function window_onLoad() {
         cellDiv.appendChild(innerSpan);
         cellDiv.className = 'cell';
 
-        // Attach the click event listener
-        cellDiv.addEventListener('click', cellClicked);
+        
 
         var dataAttribute = document.createAttribute('tileValue');
         dataAttribute.value = game.tileData[i].tileValue;
         cellDiv.setAttributeNode(dataAttribute);
 
-        // add the element to parent div
-        mainDiv.appendChild(cellDiv);
+        // add the element to dummy div
+        dummyDiv.appendChild(cellDiv);
     }
 
+    // Now copy the divs from the dummyDiv to mainDiv
+    mainDiv.innerHTML = dummyDiv.innerHTML;
+
     game.highlightNewTile();
+
+    
 
 }
 
